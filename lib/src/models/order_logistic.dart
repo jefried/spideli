@@ -21,9 +21,9 @@ class OrderLogistic {
   String truckType;
   DateTime departTime;
   DateTime arrivalTime;
-  String nameReceiver;
-  String surnameReceiver;
-  int numberPhoneReceiver;
+  String nameSender;
+  String surnameSender;
+  int numberPhoneSender;
   OrderStatus orderStatus;
   String locationStatus;
 
@@ -46,9 +46,9 @@ class OrderLogistic {
       truckType = jsonMap['truckType'];
       departTime = jsonMap['departTime'];
       arrivalTime = jsonMap['arrivalTime'];
-      nameReceiver = jsonMap['nameReceiver'].toString();
-      surnameReceiver = jsonMap['surnameReceiver'].toString();
-      numberPhoneReceiver = jsonMap['numberPhoneReceiver'];
+      nameSender = jsonMap['nameSender'].toString();
+      surnameSender = jsonMap['surnameSender'].toString();
+      numberPhoneSender = jsonMap['numberPhoneSender'];
       orderStatus = jsonMap['status'];
       locationStatus = jsonMap['locationStatus'].toString();
       payment = jsonMap['payment'];
@@ -57,8 +57,8 @@ class OrderLogistic {
       productType = '';
       masse = 0;
       description = '';
-      nameReceiver = '';
-      surnameReceiver = '';
+      nameSender = '';
+      surnameSender = '';
     }
   }
 
@@ -79,9 +79,9 @@ class OrderLogistic {
     map['truckType'] = truckType;
     map['departTime'] = departTime;
     map['arrivalTime'] = arrivalTime;
-    map["nameReceiver"] = nameReceiver;
-    map["surnameReceiver"] = surnameReceiver;
-    map["numberPhoneReceiver"] = numberPhoneReceiver;
+    map["nameSender"] = nameSender;
+    map["surnameSender"] = surnameSender;
+    map["numberPhoneSender"] = numberPhoneSender;
     map["status"] = orderStatus;
     map["locationStatus"] = locationStatus;
     map["payment"] = payment;

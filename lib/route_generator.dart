@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:markets/src/pages/CreateLogistic.dart';
 import 'package:markets/src/pages/choose_service.dart';
 import 'package:markets/src/pages/logistic.dart';
+import 'package:markets/src/pages/myMap.dart';
 import 'package:markets/src/pages/onboarding.dart';
 import 'package:markets/src/pages/logistic_page.dart';
 
@@ -107,6 +108,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ChooseServicesWidget());
       case '/Logistic':
         return MaterialPageRoute(builder: (_) => OrdersLogisticWidget());
+      case '/MyMap':
+        return MaterialPageRoute(builder: (_) => MapApp());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return MaterialPageRoute(builder: (_) => Scaffold(body: SafeArea(child: Text('Route Error'))));

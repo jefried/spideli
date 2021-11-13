@@ -11,11 +11,21 @@ import '../repository/order_repository.dart';
 
 class CreateOrderLogisticController extends ControllerMVC {
   OrderLogistic order = OrderLogistic();
-  GlobalKey<FormState> orderFormKey;
+  GlobalKey<FormState> orderProductFormKey;
+  GlobalKey<FormState> orderTruckFormKey;
+  GlobalKey<FormState> orderSenderFormKey;
+  GlobalKey<FormState> orderRouteFormKey;
   GlobalKey<ScaffoldState> scaffoldKey;
 
   CreateOrderLogisticController() {
-    orderFormKey = new GlobalKey<FormState>();
+    orderProductFormKey = new GlobalKey<FormState>();
+    orderTruckFormKey = new GlobalKey<FormState>();
+    orderSenderFormKey = new GlobalKey<FormState>();
+    orderRouteFormKey = new GlobalKey<FormState>();
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
+  }
+
+  createOrder() {
+
   }
 }

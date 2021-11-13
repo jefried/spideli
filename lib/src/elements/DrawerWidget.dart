@@ -177,6 +177,19 @@ class _DrawerWidgetState extends StateMVC<DrawerWidget> {
           ),
           ListTile(
             onTap: () {
+              Navigator.of(context).pushNamed('/MyMap');
+            },
+            leading: Icon(
+              Icons.location_on_outlined,
+              color: Theme.of(context).focusColor.withOpacity(1),
+            ),
+            title: Text(
+              "My map",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
+          ListTile(
+            onTap: () {
               Navigator.of(context).pushNamed('/Pages', arguments: 5);
             },
             leading: Icon(

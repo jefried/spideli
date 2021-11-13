@@ -76,18 +76,31 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "weight",
+                                    "Capacity",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                                 Text(widget.order.masse.toString() + " g",)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "departure estimated",
+                                    "Truck type",
+                                    style: Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                ),
+                                Text("(" + widget.order.amountTruck.toString() + ")" + widget.order.truckType)
+                              ],
+                            ),
+                            SizedBox(height: 5,),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text(
+                                    "Departure estimated",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
@@ -97,11 +110,12 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                                 ),
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "arrival estimated",
+                                    "Arrival estimated",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
@@ -111,50 +125,55 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                                 ),
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "from",
+                                    "From",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                                 Text(widget.order.departAddress.address)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "to",
+                                    "To",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                                 Text(widget.order.arrivalAddress.address)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "recipient",
+                                    "Recipient",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
-                                Text(widget.order.nameReceiver)
+                                Text(widget.order.nameSender)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    "phone number",
+                                    "Phone number",
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
-                                Text(widget.order.numberPhoneReceiver.toString())
+                                Text(widget.order.numberPhoneSender.toString())
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
@@ -166,6 +185,7 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                                 Helper.getPrice(widget.order.deliveryFee, context, style: Theme.of(context).textTheme.subtitle1)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(
@@ -177,6 +197,7 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                                 Helper.getPrice(7.08, context, style: Theme.of(context).textTheme.subtitle1)
                               ],
                             ),
+                            SizedBox(height: 5,),
                             Row(
                               children: <Widget>[
                                 Expanded(

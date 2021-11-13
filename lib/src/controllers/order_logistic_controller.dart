@@ -18,7 +18,7 @@ class OrderLogisticController extends ControllerMVC {
     listenForOrders();
   }
 
-  void listenForOrders({String message}) async {
+  void listenForOrders({String message}) {
     OrderLogistic order = OrderLogistic();
     order.active = true;
     order.payment = Payment('cash on Delivery');
@@ -35,9 +35,9 @@ class OrderLogisticController extends ControllerMVC {
     order.createdAt = DateTime.now();
     order.truckType = "tanker truck";
     order.amountTruck = 3;
-    order.nameReceiver = "sondi";
-    order.surnameReceiver = "hugo";
-    order.numberPhoneReceiver = 654871038;
+    order.nameSender = "sondi";
+    order.surnameSender = "hugo";
+    order.numberPhoneSender = 654871038;
     orders.add(order);
   }
 
