@@ -177,6 +177,32 @@ class _DrawerWidgetState extends StateMVC<DrawerWidget> {
           ),
           ListTile(
             onTap: () {
+              Navigator.of(context).pushNamed('/SearchLocation');
+            },
+            leading: Icon(
+              Icons.location_on_outlined,
+              color: Theme.of(context).focusColor.withOpacity(1),
+            ),
+            title: Text(
+              "Search location",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.of(context).pushNamed('/OsmMap');
+            },
+            leading: Icon(
+              Icons.location_on_outlined,
+              color: Theme.of(context).focusColor.withOpacity(1),
+            ),
+            title: Text(
+              "OSM Map",
+              style: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
+          ListTile(
+            onTap: () {
               Navigator.of(context).pushNamed('/MyMap');
             },
             leading: Icon(

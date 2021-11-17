@@ -5,6 +5,8 @@ import 'package:markets/src/pages/logistic.dart';
 import 'package:markets/src/pages/myMap.dart';
 import 'package:markets/src/pages/onboarding.dart';
 import 'package:markets/src/pages/logistic_page.dart';
+import 'package:markets/src/pages/osm_map.dart';
+import 'package:markets/src/pages/search_location.dart';
 
 import 'src/models/route_argument.dart';
 import 'src/pages/cart.dart';
@@ -110,6 +112,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OrdersLogisticWidget());
       case '/MyMap':
         return MaterialPageRoute(builder: (_) => MapApp());
+      case '/SearchLocation':
+        return MaterialPageRoute(builder: (_) => SearchLocation());
+      case '/OsmMap':
+        return MaterialPageRoute(builder: (_) => OsmMap());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return MaterialPageRoute(builder: (_) => Scaffold(body: SafeArea(child: Text('Route Error'))));

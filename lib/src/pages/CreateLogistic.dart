@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:markets/src/controllers/create_order_logistic_controller.dart';
 import 'package:markets/src/controllers/order_logistic_controller.dart';
 import 'package:markets/src/elements/BlockButtonWidget.dart';
+import 'package:markets/src/elements/DrawerWidget.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:intl/intl.dart';
 
@@ -273,7 +274,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                 ),
                 SizedBox(height: 30,),
                 InkWell(
-                  onTap: (){},
+                  onTap: (){Navigator.of(context).pushNamed("/MyMap");},
                   child: TextFormField(
                     enabled: false,
                     onSaved: (input) => _con.order.masse = double.parse(input),
@@ -282,7 +283,6 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                       labelText: "from",
                       labelStyle: TextStyle(color: Theme.of(context).accentColor),
                       contentPadding: EdgeInsets.all(12),
-                      hintText: "26 g",
                       hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
                       prefixIcon: Icon(Icons.location_on_outlined, color: Theme.of(context).accentColor),
                       border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
@@ -302,7 +302,6 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                       labelText: "to",
                       labelStyle: TextStyle(color: Theme.of(context).accentColor),
                       contentPadding: EdgeInsets.all(12),
-                      hintText: "26 g",
                       hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.7)),
                       prefixIcon: Icon(Icons.location_on_outlined, color: Theme.of(context).accentColor),
                       border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
@@ -417,58 +416,123 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _con.scaffoldKey,
-      appBar: AppBar(
-        title: Text("Create Logistic Order",style: TextStyle(color: Theme.of(context).accentColor),),
-      ),
-      body: Theme(
-        data: Theme.of(context).copyWith(
-          colorScheme: ColorScheme.light(primary: Theme.of(context).accentColor),
-        ),
-        child: Stepper(
-          type: StepperType.vertical,
-          steps: getSteps(),
-          currentStep: currentStep,
-          onStepContinue: (){
-            final isLastStep = currentStep == getSteps().length - 1;
-            if(isLastStep) {
-              print("Completed");
-            }else {
-              setState(() => currentStep += 1);
-            }
-          },
-          onStepTapped: (step) => setState(() => currentStep = step),
-          onStepCancel: currentStep == 0 ? null : () => setState(() => currentStep -= 1),
-          controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-            final isLastStep = currentStep == getSteps().length - 1;
-
-            return Container(
-              margin: EdgeInsets.only(top: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  currentStep != 0?BlockButtonWidget(
-                    text: Text(
-                      "BACK",
-                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+        key: _con.scaffoldKey,
+        drawer: DrawerWidget(),
+        body: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              child: Container(
+                color: Theme.of(context).accentColor,
+                height: 140 ,
+                width: MediaQuery.of(context).size.width,
+              ),
+            ),
+            Positioned(
+              left: 165,
+              top: -57 ,
+              child: Container(
+                width: 262,
+                height: 262 ,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).accentColor.withOpacity(0.2),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 45,
+              child: IconButton(
+                icon: new Icon(Icons.arrow_back, color: Colors.white),
+                onPressed: () => Navigator.of(context).pop(),//_con.scaffoldKey.currentState.openDrawer(),
+              ),
+            ),
+            Positioned(
+              top: 57 ,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: Text(
+                    "Create Order",
+                    style: TextStyle(
+                        fontFamily: "Manrope-ExtraLight",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white
                     ),
-                    color: Theme.of(context).accentColor,
-                    onPressed: onStepCancel
-                  ):Container(),
-                  BlockButtonWidget(
-                      text: Text(
-                        "NEXT",
-                        style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
-                      ),
-                      color: Theme.of(context).accentColor,
-                      onPressed: onStepContinue
                   ),
-                ],
-              )
-            );
-          },
-        ),
-      )
+                ),
+              ),
+            ),
+            Positioned(
+              top: 110,
+              child: Container(
+                height: MediaQuery.of(context).size.height - 110,
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(25),
+                    )
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                  ),
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(primary: Theme.of(context).accentColor),
+                    ),
+                    child: Stepper(
+                      type: StepperType.vertical,
+                      steps: getSteps(),
+                      currentStep: currentStep,
+                      onStepContinue: (){
+                        final isLastStep = currentStep == getSteps().length - 1;
+                        if(isLastStep) {
+                          print("Completed");
+                        }else {
+                          setState(() => currentStep += 1);
+                        }
+                      },
+                      onStepTapped: (step) => setState(() => currentStep = step),
+                      onStepCancel: currentStep == 0 ? null : () => setState(() => currentStep -= 1),
+                      controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+                        final isLastStep = currentStep == getSteps().length - 1;
+
+                        return Container(
+                            margin: EdgeInsets.only(top: 50),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                currentStep != 0?BlockButtonWidget(
+                                    text: Text(
+                                      "BACK",
+                                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    onPressed: onStepCancel
+                                ):Container(),
+                                BlockButtonWidget(
+                                    text: Text(
+                                      "NEXT",
+                                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                                    ),
+                                    color: Theme.of(context).accentColor,
+                                    onPressed: onStepContinue
+                                ),
+                              ],
+                            )
+                        );
+                      },
+                    ),
+                  )
+                ),
+              ),
+            )
+          ],
+        )
     );
 
   }

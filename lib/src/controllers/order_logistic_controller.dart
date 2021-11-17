@@ -38,7 +38,29 @@ class OrderLogisticController extends ControllerMVC {
     order.nameSender = "sondi";
     order.surnameSender = "hugo";
     order.numberPhoneSender = 654871038;
+
+
+    OrderLogistic order1 = OrderLogistic();
+    order1.active = true;
+    order1.payment = Payment('cash on Delivery');
+    order1.masse = 2045;
+    order1.departTime = DateTime.now();
+    order1.arrivalTime = DateTime.now();
+    order1.departAddress = Address();
+    order1.departAddress.address = "Melen";
+    order1.arrivalAddress = Address();
+    order1.arrivalAddress.address = "Jouvence";
+    order1.orderStatus = OrderStatus();
+    order1.orderStatus.status = 'On the Way';
+    order1.id = "1";
+    order1.createdAt = DateTime.now();
+    order1.truckType = "tanker truck";
+    order1.amountTruck = 3;
+    order1.nameSender = "sondi";
+    order1.surnameSender = "hugo";
+    order1.numberPhoneSender = 654871038;
     orders.add(order);
+    orders.add(order1);
   }
 
   void doCancelOrder(OrderLogistic order) {

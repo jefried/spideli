@@ -18,16 +18,16 @@ class _MapAppState extends State<MapApp> {
       children: [
         FlutterMap(
           options: MapOptions(
-            maxZoom: 10.0,
+            slideOnBoundaries: true,
+            minZoom: 2.3,
             onTap: (p) async{
               location = await Geocoder.local.findAddressesFromCoordinates(Coordinates(p.latitude, p.longitude));
-              print("${location.first.CountryName}");
               setState(() {
                 point = p;
               });
             },
             center: LatLng(49.5, -0.09),// will allow us to position the center of the map at a certain coordinates
-            zoom: 10.0
+            zoom: 3.0
           ),
           layers: [
             TileLayerOptions(
@@ -70,7 +70,7 @@ class _MapAppState extends State<MapApp> {
                 child: Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
-                    "",
+                    location.length>0? "${location.first.countryName}, ${location.first.locality}, ${location.first.featureName}":"",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
