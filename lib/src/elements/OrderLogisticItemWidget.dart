@@ -227,7 +227,7 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                       },
                       textColor: Theme.of(context).hintColor,
                       child: Wrap(
-                        children: <Widget>[Text(S.of(context).view)],
+                        children: <Widget>[Text("Details")],//<Widget>[Text(S.of(context).view)],
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 0),
                     ),

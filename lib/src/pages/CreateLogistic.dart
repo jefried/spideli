@@ -3,6 +3,8 @@ import 'package:markets/src/controllers/create_order_logistic_controller.dart';
 import 'package:markets/src/controllers/order_logistic_controller.dart';
 import 'package:markets/src/elements/BlockButtonWidget.dart';
 import 'package:markets/src/elements/DrawerWidget.dart';
+import 'package:markets/src/elements/ReceiverForm.dart';
+import 'package:markets/src/elements/SenderForm.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:intl/intl.dart';
 
@@ -71,6 +73,25 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
   }
 
   List<Step> getSteps() => [
+    Step(
+      state: currentStep > 0 ? StepState.complete : StepState.indexed,
+      isActive: currentStep >= 0,
+      title: Text("Shipment"),
+      content: SenderForm(),
+    ),
+    Step(
+      state: currentStep > 1 ? StepState.complete : StepState.indexed,
+      isActive: currentStep >=1,
+      title: Text("Recipient"),
+      content: ReceiverForm(),
+    ),
+    Step(
+      isActive: currentStep >=2,
+      title: Text("Review"),
+      content: Container(),
+    ),
+
+  /*List<Step> getSteps() => [
     Step(
       state: currentStep > 0 ? StepState.complete : StepState.indexed,
       isActive: currentStep >= 0,
@@ -397,7 +418,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
       isActive: currentStep >=4,
       title: Text("All information"),
       content: Container(),
-    ),
+    ),*/
     /*BlockButtonWidget(
               text: Text(
                 "create order",
@@ -465,9 +486,9 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
               ),
             ),
             Positioned(
-              top: 110,
+              top: 100,
               child: Container(
-                height: MediaQuery.of(context).size.height - 110,
+                height: MediaQuery.of(context).size.height - 100,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -485,7 +506,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                       colorScheme: ColorScheme.light(primary: Theme.of(context).accentColor),
                     ),
                     child: Stepper(
-                      type: StepperType.vertical,
+                      type: StepperType.horizontal,
                       steps: getSteps(),
                       currentStep: currentStep,
                       onStepContinue: (){

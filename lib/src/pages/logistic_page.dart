@@ -81,8 +81,8 @@ class _OrdersLogisticWidgetState extends StateMVC<OrdersLogisticWidget> {
           Positioned(
             top: 45,
             child: IconButton(
-              icon: new Icon(Icons.sort, color: Colors.white),
-              onPressed: () => this.scaffoldKey.currentState.openDrawer(),
+              icon: new Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ),
           Positioned(
