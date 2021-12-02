@@ -7,14 +7,14 @@ import 'package:intl/intl.dart';
 
 
 
-class SenderForm extends StatefulWidget {
-  const SenderForm({ Key key }) : super(key: key);
+class SenderFormMailing extends StatefulWidget {
+  const SenderFormMailing({ Key key }) : super(key: key);
 
   @override
-  _SenderFormState createState() => _SenderFormState();
+  _SenderFormMailingState createState() => _SenderFormMailingState();
 }
 
-class _SenderFormState extends State<SenderForm> {
+class _SenderFormMailingState extends State<SenderFormMailing> {
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _sendernameTextController = TextEditingController();
@@ -137,11 +137,11 @@ class _SenderFormState extends State<SenderForm> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const PackageSizeBox(imagePath: 'assets/img/lowweight.png', labelText: '26kg - 1t'),
+                const PackageSizeBox(imagePath: 'assets/img/lowweight.png', labelText: '<1kg'),
                 SizedBox(width: 18),
-                const PackageSizeBox(imagePath: 'assets/img/meanweight.png', labelText: '1t - 5t'),
+                const PackageSizeBox(imagePath: 'assets/img/meanweight.png', labelText: '1kg - 10kg'),
                 SizedBox(width: 18),
-                const PackageSizeBox(imagePath: 'assets/img/highweight.png', labelText: '> 5t'),
+                const PackageSizeBox(imagePath: 'assets/img/highweight.png', labelText: '10kg - 26kg'),
               ],
             ),
             SizedBox(height: 27,),
@@ -154,63 +154,6 @@ class _SenderFormState extends State<SenderForm> {
             ),
             SizedBox( height: 13,),
             SimpleTextFormField(textController: _packageDetailController, hintText: 'Notes',),
-            SizedBox(height: 27,),
-            const Text(
-              "Truck Type",
-              style: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Helvetica',
-              ),
-            ),
-            SizedBox( height: 13,),
-            InputDecorator(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-                contentPadding: const EdgeInsets.all(10),
-              ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  value: dropdownValueTruck,
-                  isDense: true,
-                  isExpanded: true,
-                  items: dropdownItemsTruck
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValueTruck = newValue;
-                    });
-                  },
-                ),
-              ),
-            ),
-            SizedBox(height: 27,),
-            const Text(
-              "Truck Amount",
-              style: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Helvetica',
-              ),
-            ),
-            SizedBox( height: 13,),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              onSaved: (input) => numberPhoneSender = int.parse(input),
-              validator: (input) => input.length < 8 ? "give 8 digit at minimum": null,
-              decoration: InputDecoration(
-                labelStyle: TextStyle(color: Colors.black),
-                contentPadding: EdgeInsets.all(12),
-                hintText: "01",
-                hintStyle: TextStyle(color: Colors.black),
-                border: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
-                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.5))),
-                enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).focusColor.withOpacity(0.2))),
-              ),
-            ),
             SizedBox(height: 27,),
             const Text(
               "Departure Date",

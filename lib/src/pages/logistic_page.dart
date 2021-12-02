@@ -48,14 +48,6 @@ class _OrdersLogisticWidgetState extends StateMVC<OrdersLogisticWidget> {
     });
     return Scaffold(
       key: this.scaffoldKey,
-      drawer: DrawerWidget(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed("/CreateLogistic");
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Theme.of(context).accentColor,
-      ),
       body: Stack(
         children: [
           Positioned(
@@ -91,7 +83,7 @@ class _OrdersLogisticWidgetState extends StateMVC<OrdersLogisticWidget> {
               width: MediaQuery.of(context).size.width,
               child: Center(
                 child: Text(
-                  "Logistic Orders",
+                  "My Orders",
                   style: TextStyle(
                       fontFamily: "Manrope-ExtraLight",
                       fontWeight: FontWeight.bold,
@@ -240,7 +232,7 @@ class _OrdersLogisticWidgetState extends StateMVC<OrdersLogisticWidget> {
                                 return SizedBox(height: 20);
                               },
                             ),
-                            SizedBox(height: 70),
+                            SizedBox(height: 20),
                           ],
                         ),
                       ),

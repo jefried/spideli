@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:markets/src/pages/CreateLogistic.dart';
+import 'package:markets/src/pages/CreateMailing.dart';
 import 'package:markets/src/pages/choose_service.dart';
 import 'package:markets/src/pages/logistic.dart';
 import 'package:markets/src/pages/logistic_home.dart';
@@ -117,6 +118,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OsmMap());
       case '/CreateLogistic':
         return MaterialPageRoute(builder: (_) => CreateOrderLogisticWidget());
+      case '/CreateMailing':
+        return MaterialPageRoute(builder: (_) => CreateOrderMailingWidget());
       case '/TrackLogistic':
         return MaterialPageRoute(builder: (_) => OrdersLogisticWidget());
       default:

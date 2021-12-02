@@ -218,7 +218,9 @@ class _LogisticHomeState extends State<LogisticHome> {
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: (){
+                              Navigator.of(context).pushNamed('/CreateMailing');
+                            },
                             child: Container(
                               width: MediaQuery.of(context).size.width/4,
                               height: 150,

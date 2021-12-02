@@ -4,6 +4,7 @@ import 'package:markets/src/controllers/order_logistic_controller.dart';
 import 'package:markets/src/elements/BlockButtonWidget.dart';
 import 'package:markets/src/elements/DrawerWidget.dart';
 import 'package:markets/src/elements/ReceiverForm.dart';
+import 'package:markets/src/elements/ReviewForm.dart';
 import 'package:markets/src/elements/SenderForm.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:intl/intl.dart';
@@ -88,7 +89,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
     Step(
       isActive: currentStep >=2,
       title: Text("Review"),
-      content: Container(),
+      content: ReviewForm(),
     ),
 
   /*List<Step> getSteps() => [
@@ -474,7 +475,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                 width: MediaQuery.of(context).size.width,
                 child: Center(
                   child: Text(
-                    "Create Order",
+                    "Create Logistic Order",
                     style: TextStyle(
                         fontFamily: "Manrope-ExtraLight",
                         fontWeight: FontWeight.bold,
@@ -499,6 +500,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(
+                    top: 25,
                     bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
                   child: Theme(
@@ -537,7 +539,7 @@ class _CreateOrderLogisticWidgetState extends StateMVC<CreateOrderLogisticWidget
                                 ):Container(),
                                 BlockButtonWidget(
                                     text: Text(
-                                      "NEXT",
+                                      isLastStep?"CREATE ORDER":"NEXT",
                                       style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                                     ),
                                     color: Theme.of(context).accentColor,

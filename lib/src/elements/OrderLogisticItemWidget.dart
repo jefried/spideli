@@ -223,11 +223,12 @@ class _OrderLogisticItemWidgetState extends State<OrderLogisticItemWidget> {
                     MaterialButton(
                       elevation: 0,
                       onPressed: () {
+                        Navigator.of(context).pushNamed('/OsmMap');
                         //Navigator.of(context).pushNamed('/Tracking', arguments: RouteArgument(id: widget.order.id));
                       },
                       textColor: Theme.of(context).hintColor,
                       child: Wrap(
-                        children: <Widget>[Text("Details")],//<Widget>[Text(S.of(context).view)],
+                        children: <Widget>[Text("Track order")],//<Widget>[Text(S.of(context).view)],
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 0),
                     ),
